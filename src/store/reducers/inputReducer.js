@@ -1,7 +1,7 @@
 import { INPUT_ACTION_TYPES } from "../actions/types";
 
 const initialState = {
-    value: 50
+    value: 'star'
 };
 
 const inputReducer = (state = initialState, action) => {

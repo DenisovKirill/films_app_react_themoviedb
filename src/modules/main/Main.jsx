@@ -1,14 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Container from '@material-ui/core/Container';
+import { Options } from "../../components/options/Options";
+import { FilmsContainer } from "../../components/filmsContainer/FilmsContainer";
 
-import { Button } from "../../components/button/Button";
 
 export const Main = () => {
-
     return(
         <div>
-
-            <Button text={<Link to='/films'>Go to films</Link>} />
+            <Container>
+                <Options/>
+                <FilmsContainer/>
+            </Container>
         </div>
     )
 }
