@@ -1,0 +1,17 @@
+.genres-holder {
+    padding: 5px;
+    border-top: 1px solid black;
+}
+
+.genres-buttton {
+    margin: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.genres-buttton-active {
+    background: rgb(122, 116, 116);
+    margin: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}

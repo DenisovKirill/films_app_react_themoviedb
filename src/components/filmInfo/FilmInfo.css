@@ -1,0 +1,17 @@
+.film-info-holder {
+    height: 700px;
+    color: #FFF;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.film-info-holder :before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #5e6280;
+    opacity: .6;
+}

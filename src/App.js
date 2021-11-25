@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store.js';
 
 import { Main } from './modules/main/Main';
+import { About } from './modules/about/About.jsx';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/' component={Main} />
+                        <Route exact path='/about' component={About} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilms } from "../../store/actions/filmsActions";
-import { getInputValue } from "../../store/actions/inputActions";
 
+import { API } from '../../api/Api';
+import { KEY } from '../../api/Api';
 import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
-
-const initialUrl = 'https://api.themoviedb.org/3/search/movie?api_key=8e526a58ae4ed5fe38e95586eb468e63&query='
 
 
 export const Search = () => {
@@ -14,38 +13,29 @@ export const Search = () => {
 
     const [searchValue, setSearchValue] = useState('');
 
-    const {query} = useSelector(({ inputData: { value } }) => ({
-        query: value
+    const {genres, userScore} = useSelector(({ options: { genres, userScore } }) => ({
+        genres,
+        userScore
     }));
 
     const queryFromInput = ({ target: { value } }) => {
         setSearchValue(value);
-    }
-
-    const getFilms = async (value) => {
-        const data = await fetch(`${initialUrl}${value}`);
-        const formattedData = await data.json();
-
-        dispatch(setFilms(formattedData.results))
     };
 
     useEffect(() => {
-        getFilms(query)
-    }, [query])
+        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&with_genres=${genres.join('%2C')}&vote_average.gte=${userScore[0]}&vote_average.lte=${userScore[1]}&sort_by=popularity.desc`));
+    }, [genres, userScore]);
 
-    const searchFilms = () => {
+    const searchFilms = async () => {
         if (searchValue) {
-            dispatch(getInputValue(searchValue));
-            getFilms(query);
-        }
+            dispatch(setFilms(`${API}search/movie?api_key=${KEY}&query=${searchValue}`));
+        };
     }
 
     return(
         <div>
-            <Input value={query} onChange={queryFromInput} />
-            <Button text='Render films' onClick={searchFilms} />
+            <Input value={searchValue} onChange={queryFromInput} />
+            <Button text='Search' onClick={searchFilms} />
         </div>
     )
-
-
 }
