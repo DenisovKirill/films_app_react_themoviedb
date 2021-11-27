@@ -20,3 +20,10 @@ export const setReleaseDatesRange = (newReleaseDatesRange) => {
         payload: newReleaseDatesRange
     }
 };
+
+export const setPage = (newPage) => {
+    return {
+        type: OPTIONS_ACTIONS_TYPES.SET_PAGE,
+        payload: newPage
+    }
+};

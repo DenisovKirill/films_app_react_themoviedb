@@ -1,26 +1,33 @@
 import { FILMS_ACTION_TYPES } from "./types";
 import { getData } from "../../services/getData";
 
-export const getPage = (newPage) => {
-    return {
-        type: FILMS_ACTION_TYPES.SET_PAGE,
-        payload: newPage
-    }
-};
+// export const setPage = (newPage) => {
+//     return {
+//         type: FILMS_ACTION_TYPES.SET_PAGE,
+//         payload: newPage
+//     }
+// };
 
-// export const setFilms = (url) => async (dispatch) =>  {
-//     try {
-//         const data = await fetch(url);
-//         const formattedData = await data.json();
-//         dispatch({type: FILMS_ACTION_TYPES.SET_FILMS, payload: formattedData.results});
+// export const setTotalPages = (newTotalPage) => {
+//     return {
+//         type: FILMS_ACTION_TYPES.SET_TOTAL_PAGES,
+//         payload: newTotalPage
 //     }
-//     catch {
-//         console.log('Some error');
-//     }
-// }
+// };
+
+
+// export const setTotalPages = (url) => async (dispatch) =>  {
+//     const data = await getData(url);
+//     dispatch({type: FILMS_ACTION_TYPES.SET_TOTAL_PAGES, payload: data});
+// };
 
 
 export const setFilms = (url) => async (dispatch) =>  {
     const data = await getData(url);
-    dispatch({type: FILMS_ACTION_TYPES.SET_FILMS, payload: data.results});
+    dispatch({type: FILMS_ACTION_TYPES.SET_FILMS, payload: {
+        films: data.results,
+    }});
+    dispatch({type: FILMS_ACTION_TYPES.SET_TOTAL_PAGES, payload: {
+        total_pages: data.total_pages
+    }});
 };

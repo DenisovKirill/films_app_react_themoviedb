@@ -1,22 +1,31 @@
 import { FILMS_ACTION_TYPES } from "../actions/types";
 
+
 const initialState = {
     films: [],
-    page: 1
+    total_pages: 0
 };
 
 const filmReducer = (state = initialState, action) => {
     switch (action.type) {
+        // case FILMS_ACTION_TYPES.SET_DATA:
+        //     return {
+        //         ...state,
+        //         ...action.payload
+        //     };
+
         case FILMS_ACTION_TYPES.SET_FILMS:
             return {
                 ...state,
-                films: action.payload
+                films: action.payload.films
             };
-            case FILMS_ACTION_TYPES.SET_PAGE:
+
+            case FILMS_ACTION_TYPES.SET_TOTAL_PAGES:
                 return {
                     ...state,
-                    page: action.payload
-                };
+                    total_pages: action.payload.total_pages
+                }
+
             default:
                 return state;
     }

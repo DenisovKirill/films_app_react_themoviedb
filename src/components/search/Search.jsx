@@ -13,9 +13,10 @@ export const Search = () => {
 
     const [searchValue, setSearchValue] = useState('');
 
-    const {genres, userScore} = useSelector(({ options: { genres, userScore } }) => ({
+    const {genres, userScore, page} = useSelector(({ options: { genres, userScore, page } }) => ({
         genres,
-        userScore
+        userScore,
+        page
     }));
 
     const queryFromInput = ({ target: { value } }) => {
@@ -23,8 +24,8 @@ export const Search = () => {
     };
 
     useEffect(() => {
-        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&with_genres=${genres.join('%2C')}&vote_average.gte=${userScore[0]}&vote_average.lte=${userScore[1]}&sort_by=popularity.desc`));
-    }, [genres, userScore]);
+        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&with_genres=${genres.join('%2C')}&page=${page}&vote_average.gte=${userScore[0]}&vote_average.lte=${userScore[1]}&sort_by=popularity.desc`));
+    }, [genres, userScore, page]);
 
     const searchFilms = async () => {
         if (searchValue) {

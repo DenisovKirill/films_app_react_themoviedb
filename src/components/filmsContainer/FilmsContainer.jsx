@@ -4,19 +4,18 @@ import { Grid } from "@material-ui/core";
 
 import { FilmCard } from "../../components/filmCard/FilmCard";
 import { setAboutInfo } from "../../store/actions/aboutActions";
-
+import { FilmsPagination } from "../pagination/Pagination";
 
 export const FilmsContainer = () => {
     const dispatch = useDispatch();
-    const {films} = useSelector(({ myFilms: { films } }) => ({
+    const { films } = useSelector(({ myFilms: { films } }) => ({
         films
     }));
-
 
     const showAbout = (id) => {
         console.log(id);
         dispatch(setAboutInfo(id));
-    }
+    };
 
     const renderFilms = () => {
         return films.map(item => {
@@ -29,19 +28,18 @@ export const FilmsContainer = () => {
                         onClick={() => {
                             showAbout(item.id)
                         }}
-                        // genres = {item.genre_ids.join(', ')}
-                        // score = {item.vote_average}
                     />
                 </React.Fragment>
             )
         })
-    }
+    };
 
     return(
         <div>
             <Grid container>
                 {renderFilms()}
             </Grid>
+            <FilmsPagination />
         </div>
     )
 }

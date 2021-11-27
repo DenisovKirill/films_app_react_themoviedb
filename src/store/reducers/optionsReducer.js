@@ -3,7 +3,8 @@ import { OPTIONS_ACTIONS_TYPES } from "../actions/types";
 const initialState = {
     genres: [],
     userScore: [0, 10],
-    releaseDatesRange: []
+    releaseDatesRange: [],
+    page: 1
 }
 
 // const checkDouble = (arr, num) => {
@@ -21,8 +22,6 @@ const optionsReducer = (state = initialState, action) => {
         case OPTIONS_ACTIONS_TYPES.SET_GENRES:
             return {
                 ...state,
-                // genres: [...state.genres, action.payload]
-                // genres: checkDouble(state.genres, action.payload)
                 genres: !state.genres.some(arrVal => action.payload === arrVal) ?
                 [...state.genres, action.payload] :
                 state.genres.filter(item => item !== action.payload)
@@ -39,6 +38,12 @@ const optionsReducer = (state = initialState, action) => {
                 ...state,
                 releaseDatesRange: action.payload
             }
+
+            case OPTIONS_ACTIONS_TYPES.SET_PAGE:
+                return {
+                    ...state,
+                    page: action.payload
+                };
 
         default:
             return state

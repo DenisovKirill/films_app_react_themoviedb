@@ -9,4 +9,4 @@ export default combineReducers({
     myFilms: filmReducer,
     options: optionsReducer,
     about: aboutReducer,
-})
+});
