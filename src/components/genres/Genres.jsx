@@ -29,14 +29,23 @@ const genresList = [
 export const Genres = () => {
     const dispatch = useDispatch();
 
+    const genreButtonClick = (item, { target }) => {
+        if (!target.classList.contains("genres-buttton-active")) {
+            target.classList.add('genres-buttton-active')
+        } else {
+            target.classList.remove('genres-buttton-active')
+        }
+        dispatch(setGenre(item.id));
+    };
+
     const renderGenres = () => {
         return genresList.map((item, i) => {
             return (
                 <React.Fragment key={i}>
                     <button
                         className='genres-buttton'
-                        onClick={() => {
-                            dispatch(setGenre(item.id));
+                        onClick={({ target }) => {
+                            genreButtonClick(item, { target })
                         }}
                     >
                         {item.name}

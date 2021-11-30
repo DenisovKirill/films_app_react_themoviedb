@@ -1,0 +1,37 @@
+.film-card__container {
+    display: flex;
+    position: relative;
+}
+
+.film-card__card {
+    background: linear-gradient(90deg, rgba(192,214,219,1) 0%, rgba(6,180,218,1) 100%);
+    margin: 5px;
+    padding: 10px 5px;
+}
+
+.film-card__title {
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    margin: 5px;
+    padding-bottom: 20px;
+}
+
+.film-card__image {
+    display: block;
+    margin: 0 auto;
+    width: 100%
+}
+
+.film-card__content {
+    padding: 0;
+    flex-grow: 1;
+    /* flex: 1 */
+}
+
+.film-card__btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgb(94, 84, 204);
+}

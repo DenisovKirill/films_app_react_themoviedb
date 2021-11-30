@@ -10,6 +10,9 @@ export const About = () => {
         info
     }));
 
+    const background = `https://image.tmdb.org/t/p/original/${info?.backdrop_path}`
+    console.log(background)
+
     const renderAbout = () => {
         return (
             <FilmInfo
@@ -25,8 +28,6 @@ export const About = () => {
         renderAbout()
     }, [info])
 
-    const background = `https://image.tmdb.org/t/p/original/${info?.backdrop_path}`
-    console.log(background)
     return(
         <div>
             {/* <FilmInfo

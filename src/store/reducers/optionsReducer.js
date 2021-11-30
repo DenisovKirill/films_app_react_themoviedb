@@ -5,17 +5,7 @@ const initialState = {
     userScore: [0, 10],
     releaseDatesRange: [],
     page: 1
-}
-
-// const checkDouble = (arr, num) => {
-//     if (!arr.some(value => num === value)) {
-//         arr = [...arr, num]
-//     } else {
-//         const index = arr.indexOf(num);
-//         arr.splice(index, 1)
-//     }
-//     return arr
-// }
+};
 
 const optionsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -48,6 +38,6 @@ const optionsReducer = (state = initialState, action) => {
         default:
             return state
     }
-}
+};
 
 export default optionsReducer;

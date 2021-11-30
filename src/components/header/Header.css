@@ -1,0 +1,5 @@
+.header {
+    margin: 0 0 10px;
+    padding: 5px;
+    background: linear-gradient(90deg, rgba(192,214,219,1) 0%, rgba(6,180,218,1) 100%);
+}

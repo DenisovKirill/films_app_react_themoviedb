@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -10,10 +10,10 @@ export const FilmsPagination = () => {
         total_pages
     }));
 
-    const handlePage = (event, value) => {
+    const handlePage = (_, value) => {
         console.log(value);
         dispatch(setPage(value))
-    }
+    };
 
     return (
         <Pagination

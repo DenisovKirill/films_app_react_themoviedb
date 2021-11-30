@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import Container from '@material-ui/core/Container';
 import { Grid } from "@material-ui/core";
+
 import { Options } from "../../components/options/Options";
 import { FilmsContainer } from "../../components/filmsContainer/FilmsContainer";
+import { FavouriteContainer } from "../../components/favouriteContainer/FavouriteContainer";
 import { Header } from "../../components/header/Header";
+import { setFilms } from "../../store/actions/filmsActions";
+import { API } from '../../api/Api';
+import { KEY } from '../../api/Api';
 
 export const Main = () => {
-    return(
+    const dispatch = useDispatch();
+
+    const {genres, userScore, page} = useSelector(({ options: { genres, userScore, page } }) => ({
+        genres,
+        userScore,
+        page
+    }));
+
+    const { filmsSection, favoriteSection } = useSelector(({ sections: {filmsSection, favoriteSection} }) => ({
+        filmsSection,
+        favoriteSection
+    }));
+
+    useEffect(() => {
+        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&with_genres=${genres.join('%2C')}&page=${page}&vote_average.gte=${userScore[0]}&vote_average.lte=${userScore[1]}&sort_by=popularity.desc`));
+    }, [genres, userScore, page]);
+
+    return (
         <div>
             <Header/>
             <Container>
@@ -15,11 +39,11 @@ export const Main = () => {
                         <Options />
                     </Grid>
                     <Grid item xs={10}>
-                        <FilmsContainer />
+                        {filmsSection && <FilmsContainer />}
+                        {favoriteSection && <FavouriteContainer />}
                     </Grid>
                 </Grid>
             </Container>
         </div>
     )
 }
-

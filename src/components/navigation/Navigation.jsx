@@ -1,31 +1,34 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from "react-redux";
+import { setFilmsSection, setFavouriteSection } from "../../store/actions/sectionActions";
 
-const useStyles = makeStyles({
-    item: {
-        margin: '0 15px',
-        fontSize: '18px',
-        fontWeight: '600',
-        color: '#FFF',
-        cursor: 'pointer'
-    }
-});
+import './Navigation.css';
 
 export const Navigation = () => {
-    const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const showFilmsSection = () => {
+        console.log('films');
+        dispatch(setFilmsSection)
+    }
+
+    const showFavouriteSection = () => {
+        console.log('favourite');
+        dispatch(setFavouriteSection)
+    }
 
     return(
-        <Grid container >
-            <Grid className={classes.item} item>
-                Home
+        <Grid container className='navigation' justifyContent='flex-end'>
+            <Grid className='navigation__item' item>
+                <span onClick={showFilmsSection} >Films</span>
             </Grid>
-            <Grid className={classes.item} item>
-                Films
+            <Grid className='navigation__item' item>
+                <span onClick={showFavouriteSection} >Favourite</span>
             </Grid>
-            <Grid className={classes.item} item>
+            <Grid className='navigation__item' item>
                 Logout
             </Grid>
         </Grid>
     )
-}
+};

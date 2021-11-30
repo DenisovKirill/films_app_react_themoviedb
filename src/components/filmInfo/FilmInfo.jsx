@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "@material-ui/core";
 // import { useSelector } from "react-redux";
 
 import "./FilmInfo.css";
@@ -6,13 +7,18 @@ import "./FilmInfo.css";
 export const FilmInfo = (props) => {
     return (
         <div
-            className='film-info-holder'
+            className='film-info__wrapper'
             style={{
             backgroundImage: `url(${props.sendUrl})`
-            // fontSize:`${props.size}px`
           }}>
-            <h2>{props.title}</h2>
-            <p>{props.overview}</p>
+              <Container>
+                <div className='film-info__block'>
+                    <h2 className='film-info__title'>{props.title}</h2>
+                    <p className='film-info__overview'>{props.overview}</p>
+                </div>
+              </Container>
+
+
         </div>
     )
 }

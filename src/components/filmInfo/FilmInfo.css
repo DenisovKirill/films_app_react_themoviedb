@@ -1,11 +1,13 @@
-.film-info-holder {
-    height: 700px;
+.film-info__wrapper {
+    height: 100%;
     color: #FFF;
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
+    z-index: 5;
 }
 
-.film-info-holder :before {
+.film-info__wrapper :before {
     content: "";
     position: absolute;
     top: 0;
@@ -13,5 +15,16 @@
     left: 0;
     bottom: 0;
     background-color: #5e6280;
-    opacity: .6;
+    opacity: .2;
+}
+.film-info__title,
+.film-info__overview {
+    position: relative;
+    z-index: 1000;
+}
+
+.film-info__title {
+    text-align: center;
+    font-size: 22px;
+    padding: 15px;
 }

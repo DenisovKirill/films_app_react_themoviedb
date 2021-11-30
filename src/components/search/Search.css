@@ -1,0 +1,9 @@
+.search__button {
+    width: 180px;
+    height: 30px;
+    background: #B9D5DB;
+}
+
+.search__button:hover {
+    background: #0CB5DA;
+}

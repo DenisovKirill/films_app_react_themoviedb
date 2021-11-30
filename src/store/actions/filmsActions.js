@@ -15,13 +15,6 @@ import { getData } from "../../services/getData";
 //     }
 // };
 
-
-// export const setTotalPages = (url) => async (dispatch) =>  {
-//     const data = await getData(url);
-//     dispatch({type: FILMS_ACTION_TYPES.SET_TOTAL_PAGES, payload: data});
-// };
-
-
 export const setFilms = (url) => async (dispatch) =>  {
     const data = await getData(url);
     dispatch({type: FILMS_ACTION_TYPES.SET_FILMS, payload: {
