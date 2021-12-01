@@ -1,30 +1,79 @@
 .film-info__wrapper {
-    height: 100%;
     color: #FFF;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     z-index: 5;
+    /* height: 100vh; */
+    padding: 50px 0 150px;
 }
 
-.film-info__wrapper :before {
-    content: "";
+.film-info__wrapper:after {
+    content: '';
     position: absolute;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
-    background-color: #5e6280;
-    opacity: .2;
+    background-color: #565fa3;
+    opacity: 0.7;
+    z-index: 2;
 }
-.film-info__title,
-.film-info__overview {
+
+.film-info__block {
     position: relative;
-    z-index: 1000;
+    z-index: 5;
+    color: #fff;
+}
+
+.film-info__poster {
+    display: block;
+    margin: 0 auto;
+    width: 100%
+}
+
+.film-info__data {
+    padding: 30px;
 }
 
 .film-info__title {
-    text-align: center;
+    font-size: 44px;
+    margin: 0;
+}
+
+.film-info__genres,
+.film-info__release-date,
+.film-info__release-runtime,
+.film-info__countries {
     font-size: 22px;
-    padding: 15px;
+    margin-top: 10px;
+}
+
+.film-info__overview {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.film-info__block .MuiRating-iconEmpty {
+    color: rgba(32, 21, 21, 0.7);
+}
+
+.film-info__rating {
+    margin-top: 10px;
+}
+
+.film-info__btn {
+    width: 180px;
+    height: 30px;
+    background: #B9D5DB;
+}
+
+.film-info__btn:hover {
+    background: #0CB5DA;
+}
+
+.film-info__btn-link {
+    display: block;
+    text-decoration: none;
+    color: #000;
 }

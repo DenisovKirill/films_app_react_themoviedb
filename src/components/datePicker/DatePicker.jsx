@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import TextField from '@material-ui/core/TextField';
 
-import { setReleaseDatesRange } from "../../store/actions/optionsActions";
+// import { setReleaseDatesRange } from "../../store/actions/optionsActions";
 
 export const DatePicker = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     let now = new Date();
     const [selectedDate, setSelectedDate] = useState(now);

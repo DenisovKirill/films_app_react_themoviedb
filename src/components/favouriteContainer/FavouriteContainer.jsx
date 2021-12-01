@@ -1,8 +1,8 @@
 import React,  { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 // import { setAboutInfo } from "../../store/actions/aboutActions";
 // import { FilmCard } from "../filmCard/FilmCard";
-// import { getData } from "../../services/getData";
+import { getData } from "../../services/getData";
 // import { setFavourite } from "../../store/actions/favouriteActions";
 
 export const FavouriteContainer = () => {
@@ -12,15 +12,21 @@ export const FavouriteContainer = () => {
     //     favouritesInfo
     // }));
 
-    // const favIds = JSON.parse(localStorage.getItem('favoriteInStorage'));
+    const favIds = JSON.parse(localStorage.getItem('favoriteInStorage'));
 
-    // let favorites = [];
+    let favorites = [];
 
-    // favIds.map(async (item) => await getData(`https://api.themoviedb.org/3/movie/${item}?api_key=8e526a58ae4ed5fe38e95586eb468e63`));
+    const favArr = favIds.map(async (item) => await getData(`https://api.themoviedb.org/3/movie/${item}?api_key=8e526a58ae4ed5fe38e95586eb468e63`));
 
+    Promise.all(favArr)
+    .then(responses => {
+        for(let response of responses) {
+            console.log(response)
+            favorites.push(responses)
+        }
+    })
 
-
-    // console.log(favIds)
+    console.log(favorites)
 
     // useEffect(() => {
     //     dispatch(setFavourite(favorites))
