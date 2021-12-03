@@ -6,8 +6,10 @@ import Rating from '@material-ui/lab/Rating';
 import { Button } from "../button/Button";
 
 import "./FilmInfo.css";
+import defaultPoster from  "../../images/no-img.jpg";
 
 export const FilmInfo = (props) => {
+    const poster = props.poster ? `https://image.tmdb.org/t/p/original/${props.poster}` : defaultPoster;
     return (
         <div
             className='film-info__wrapper'
@@ -20,7 +22,7 @@ export const FilmInfo = (props) => {
                         <Grid item xs={5}>
                             <img
                                 className='film-info__poster'
-                                src={props.poster}
+                                src={poster}
                                 alt="poster"
                             />
                         </Grid>

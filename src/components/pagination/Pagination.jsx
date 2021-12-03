@@ -16,10 +16,11 @@ export const FilmsPagination = () => {
     };
 
     return (
-        <Pagination
+        <>
+        { total_pages > 0 && <Pagination
             count={total_pages}
             color="primary"
-            onChange={handlePage}
-        />
+            onChange={handlePage}/>}
+        </>
     )
 }

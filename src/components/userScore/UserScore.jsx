@@ -1,10 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setUserScore } from "../../store/actions/optionsActions";
+import { debounce } from 'throttle-debounce';
 
 import Slider from '@material-ui/core/Slider';
-
-
 
 export const UserScore = () => {
     const dispatch = useDispatch();
@@ -24,19 +23,13 @@ export const UserScore = () => {
             value: 10,
             label: 10
         }
-    ]
+    ];
 
-    const userScoreChange = (event, newValue) => {
+    const userScoreChange = debounce(500, (_, newValue) => {
         setValue(newValue);
         dispatch(setUserScore(newValue))
         console.log(value)
-    };
-
-    // const userScoreChange = ({ target: { value } }) => {
-    //     // setValue(newValue);
-    //     dispatch(setUserScore(value))
-    //     console.log(value)
-    // };
+    });
 
     return (
         <div>

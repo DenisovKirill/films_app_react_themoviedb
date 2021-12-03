@@ -1,42 +1,26 @@
-import React,  { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { setAboutInfo } from "../../store/actions/aboutActions";
-// import { FilmCard } from "../filmCard/FilmCard";
-import { getData } from "../../services/getData";
-// import { setFavourite } from "../../store/actions/favouriteActions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Grid } from "@material-ui/core";
+
+import { setFavourite } from "../../store/actions/favouriteActions";
+import { spawnFilms } from "../../services/spawnFilms";
 
 export const FavouriteContainer = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const { favouritesInfo } = useSelector(({ favourite: { favouritesInfo }}) => ({
+        favouritesInfo
+    }));
 
-    // const { favouritesInfo } = useSelector(({ favourite: { favouritesInfo }}) => ({
-    //     favouritesInfo
-    // }));
+    useEffect(() => {
+        dispatch(setFavourite());
 
-    const favIds = JSON.parse(localStorage.getItem('favoriteInStorage'));
+    }, [favouritesInfo]);
 
-    let favorites = [];
-
-    const favArr = favIds.map(async (item) => await getData(`https://api.themoviedb.org/3/movie/${item}?api_key=8e526a58ae4ed5fe38e95586eb468e63`));
-
-    Promise.all(favArr)
-    .then(responses => {
-        for(let response of responses) {
-            console.log(response)
-            favorites.push(responses)
-        }
-    })
-
-    console.log(favorites)
-
-    // useEffect(() => {
-    //     dispatch(setFavourite(favorites))
-    // }, [favouritesInfo])
-
-    
     return (
         <div>
-            Favourite
-            {/* {renderFavourite()} */}
+            <Grid container>
+                {spawnFilms(favouritesInfo)}
+            </Grid>
         </div>
     )
 };

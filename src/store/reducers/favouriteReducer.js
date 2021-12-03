@@ -4,6 +4,8 @@ const initialState = {
     favouritesInfo: []
 };
 
+
+
 const favouriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case FAVOURITE_ACTIONS_TYPES.SET_FAVOURITE:

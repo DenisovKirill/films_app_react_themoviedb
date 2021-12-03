@@ -12,7 +12,8 @@ export const OPTIONS_ACTIONS_TYPES = Object.freeze({
 });
 
 export const ABOUT_ACTIONS_TYPES = Object.freeze({
-    SET_ABOUT_INFO: 'SET_ABOUT_INFO'
+    SET_ABOUT_INFO: 'SET_ABOUT_INFO',
+    CLEAR_ABOUT_INFO: 'CLEAR'
 });
 
 export const SECTIONS_ACTIONS_TYPES = Object.freeze({

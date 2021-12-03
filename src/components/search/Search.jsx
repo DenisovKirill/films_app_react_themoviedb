@@ -8,10 +8,13 @@ import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
 
 import './Search.css';
+import {useHistory} from "react-router-dom";
 
 export const Search = () => {
     const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
+    const history = useHistory();
+    // console.log('search history', history);
 
     const queryFromInput = ({ target: { value } }) => {
         setSearchValue(value);
@@ -19,6 +22,10 @@ export const Search = () => {
 
     const searchFilms = async () => {
         if (searchValue) {
+            // history.push({
+            //     pathname: '/',
+            //     search: `?search=${searchValue}`
+            // })
             dispatch(setFilms(`${API}search/movie?api_key=${KEY}&query=${searchValue}`));
         };
     }

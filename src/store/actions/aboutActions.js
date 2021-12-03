@@ -7,3 +7,7 @@ export const setAboutInfo = (id) => async (dispatch) => {
     const data = await getData(`${API}movie/${id}?api_key=${KEY}`);
     dispatch({type: ABOUT_ACTIONS_TYPES.SET_ABOUT_INFO, payload: data});
 };
+
+export const clearAboutInfo = {
+    type: ABOUT_ACTIONS_TYPES.CLEAR_ABOUT_INFO
+};

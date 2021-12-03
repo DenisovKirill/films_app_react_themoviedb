@@ -5,27 +5,27 @@ import Grid from '@material-ui/core/Grid';
 import { Rating } from "@material-ui/lab";
 
 import { Button } from "../button/Button";
-// import { favouriteInit } from "../../services/favouriteInit";
+import defaultPoster from '../../images/no-img.jpg'
 
 import './FilmCard.css';
 
 export const FilmCard = (props) => {
 
+    const src = props.src ? `https://image.tmdb.org/t/p/original/${props.src}` : defaultPoster;
 
     return(
         <Grid className='film-card__container' item xs={3}>
         <div className='film-card__card'>
             <div className='film-card__content' data-id={props.id}>
-                {<Link to='/about'>
+                {<Link to={`/about/${props.id}`}>
                     <img
                         className='film-card__image'
-                        src={props.src}
+                        src={src}
                         alt='poster'
                         onClick={props.onClick}
                     />
                 </Link>}
                 <h2 className='film-card__title'>{props.title}</h2>
-                {/* <span>{props.id}</span> */}
                 <Rating
                     className='film-card__rating'
                     size='small'

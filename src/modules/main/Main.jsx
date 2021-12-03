@@ -12,22 +12,33 @@ import { setFilms } from "../../store/actions/filmsActions";
 import { API } from '../../api/Api';
 import { KEY } from '../../api/Api';
 
+import qs from 'qs';
+
 export const Main = () => {
     const dispatch = useDispatch();
 
-    const {genres, userScore, page} = useSelector(({ options: { genres, userScore, page } }) => ({
+    const {genres, userScore, page, filmsSection, favoriteSection} = useSelector((
+        {options: { genres, userScore, page }, sections: {filmsSection, favoriteSection} }
+        ) => ({
         genres,
         userScore,
-        page
-    }));
-
-    const { filmsSection, favoriteSection } = useSelector(({ sections: {filmsSection, favoriteSection} }) => ({
+        page,
         filmsSection,
         favoriteSection
     }));
 
+    const options = {
+        'with_genres': genres.join(','),
+        'page': page,
+        'vote_average.gte': userScore[0],
+        'vote_average.lte': userScore[1],
+        'sort_by': 'popularity.desc'
+    }
+
+    const optionsString = qs.stringify(options);
+
     useEffect(() => {
-        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&with_genres=${genres.join('%2C')}&page=${page}&vote_average.gte=${userScore[0]}&vote_average.lte=${userScore[1]}&sort_by=popularity.desc`));
+        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&${optionsString}`));
     }, [genres, userScore, page]);
 
     return (
@@ -46,4 +57,4 @@ export const Main = () => {
             </Container>
         </div>
     )
-}
+};
