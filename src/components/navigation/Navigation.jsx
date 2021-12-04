@@ -1,4 +1,6 @@
 import React from "react";
+import { useHistory } from "react-router";
+
 import Grid from '@material-ui/core/Grid';
 import { useDispatch } from "react-redux";
 import { setFilmsSection, setFavouriteSection } from "../../store/actions/sectionActions";
@@ -6,16 +8,18 @@ import { setFilmsSection, setFavouriteSection } from "../../store/actions/sectio
 import './Navigation.css';
 
 export const Navigation = () => {
+    const history = useHistory();
+
     const dispatch = useDispatch();
 
     const showFilmsSection = () => {
-        console.log('films');
         dispatch(setFilmsSection)
     }
 
     const showFavouriteSection = () => {
-        console.log('favourite');
-        dispatch(setFavouriteSection)
+        dispatch(setFavouriteSection);
+        history.location.pathname ='./favourite';
+        console.log(history);
     }
 
     return(

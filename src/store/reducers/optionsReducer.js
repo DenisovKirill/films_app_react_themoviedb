@@ -35,6 +35,9 @@ const optionsReducer = (state = initialState, action) => {
                     page: action.payload
                 };
 
+            case OPTIONS_ACTIONS_TYPES.CLEAR_OPTIONS:
+                return initialState;
+
         default:
             return state
     }

@@ -13,23 +13,11 @@ import './Filters.css'
 
 export const Filters  = () => {
   return (
-    <div>
-        <span className='filters-title'>Filters</span>
+    <div className='filters'>
+        <span className='filters__title'>Filters</span>
         <Genres />
         <UserScore />
         <DatePicker />
-      {/* <Accordion className='filters-accordion'>
-        <AccordionSummary
-            className='filters-accordion-header'
-            expandIcon={<ExpandMoreIcon />}
-        >
-            <span className='filters-title'>Filters</span>
-        </AccordionSummary>
-        <AccordionDetails className='filters-holder'>
-            <Genres/>
-        </AccordionDetails>
-
-      </Accordion> */}
     </div>
   );
 }

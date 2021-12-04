@@ -1,5 +1,3 @@
-// import { getFavourite } from "../store/actions/favouriteActions";
-
 export const favouriteInit = (id) =>{
 
     const storageFilms = localStorage.getItem('favoriteInStorage');
@@ -16,8 +14,5 @@ export const favouriteInit = (id) =>{
         fav = fav.filter(item => item !== id);
     }
 
-    console.log(fav);
-
     localStorage.setItem('favoriteInStorage', JSON.stringify(fav));
-
 };

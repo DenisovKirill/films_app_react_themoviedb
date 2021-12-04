@@ -27,3 +27,7 @@ export const setPage = (newPage) => {
         payload: newPage
     }
 };
+
+export const clearOptions = {
+    type: OPTIONS_ACTIONS_TYPES.CLEAR_OPTIONS
+};

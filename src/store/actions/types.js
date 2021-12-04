@@ -8,7 +8,8 @@ export const OPTIONS_ACTIONS_TYPES = Object.freeze({
     SET_GENRES: 'SET_GENRES',
     SET_USER_SCORE: 'SET_USER_SCORE',
     SET_RELEASE_DATES: 'SET_RELEASE_DATES',
-    SET_PAGE: 'SET_PAGE'
+    SET_PAGE: 'SET_PAGE',
+    CLEAR_OPTIONS: 'CLEAR_OPTIONS'
 });
 
 export const ABOUT_ACTIONS_TYPES = Object.freeze({

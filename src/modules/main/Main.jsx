@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 import Container from '@material-ui/core/Container';
 import { Grid } from "@material-ui/core";
@@ -16,6 +17,8 @@ import { API, KEY } from '../../api/Api';
 import qs from 'qs';
 
 export const Main = () => {
+    const history = useHistory();
+    const {query} = qs.parse(history.location.search, { ignoreQueryPrefix: true });
     const dispatch = useDispatch();
 
 
@@ -47,22 +50,36 @@ export const Main = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(setFilms(`${API}discover/movie${KEY}&${optionsString}`));
-    }, [genres, userScore, page]);
+        let url = `${API}discover/movie${KEY}&${optionsString}`;
+        if(query && query !== '') {
+            console.log('query', query);
+            url = `${API}search/movie${KEY}&query=${query}`;
+        }
+        dispatch(setFilms(url));
+    }, [genres, userScore, page, query]);
 
     return (
         <div>
             <Header/>
             <Container>
+            {filmsSection &&
                 <Grid container>
                     <Grid item xs={2}>
                         <Options />
                     </Grid>
                     <Grid item xs={10}>
-                        {filmsSection && <FilmsContainer />}
-                        {favoriteSection && <FavouriteContainer />}
+                        <FilmsContainer />
                     </Grid>
+                </Grid>}
+
+            {favoriteSection &&
+                <Grid container>
+                <Grid item xs={1}></Grid>
+                <Grid item xs={10}>
+                    <FavouriteContainer />
                 </Grid>
+                <Grid item xs={1}></Grid>
+            </Grid>}
             </Container>
         </div>
     )

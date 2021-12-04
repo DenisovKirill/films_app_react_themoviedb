@@ -6,5 +6,6 @@ export const getData = async (url) =>  {
     }
     catch {
         console.log('Some error');
+        return [];
     }
 };

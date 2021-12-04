@@ -8,7 +8,7 @@ import favouriteReducer from './reducers/favouriteReducer.js';
 import setReceivedGenresReducer from './reducers/genresReducer.js';
 
 export default combineReducers({
-    myFilms: filmReducer,
+    filmsInfo: filmReducer,
     options: optionsReducer,
     about: aboutReducer,
     sections: sectionsReducer,

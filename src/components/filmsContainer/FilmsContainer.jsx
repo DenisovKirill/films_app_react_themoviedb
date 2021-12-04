@@ -6,7 +6,7 @@ import { FilmsPagination } from "../pagination/Pagination";
 import { spawnFilms } from "../../services/spawnFilms";
 
 export const FilmsContainer = () => {
-    const { films, loading } = useSelector(({ myFilms: { films, loading } }) => ({
+    const { films, loading } = useSelector(({ filmsInfo: { films, loading } }) => ({
         films,
         loading
     }));

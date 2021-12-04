@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { debounce } from 'throttle-debounce';
-import { getData } from "../../services/getData";
 
 import { setGenre } from "../../store/actions/optionsActions";
+import { FILMS_ACTION_TYPES } from "../../store/actions/types";
 
 import './Genres.css';
 
@@ -14,9 +14,10 @@ export const Genres = () => {
     ))
     const dispatch = useDispatch();
 
-    const genreButtonClick = ((item, { target }) => {
-        debounce(dispatch(setGenre(item.id)));
-    });
+    const genreButtonClick = (item, { target }) => {
+        dispatch({type: FILMS_ACTION_TYPES.SET_LOADING , payload: true});
+        dispatch(setGenre(item.id));
+    };
 
     const renderGenres = () => {
         return genresList.map((item, i) => {
