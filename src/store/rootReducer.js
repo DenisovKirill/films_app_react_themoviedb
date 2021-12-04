@@ -5,6 +5,7 @@ import optionsReducer from './reducers/optionsReducer.js';
 import aboutReducer from './reducers/aboutReducer.js';
 import sectionsReducer from './reducers/sectionsReducer.js';
 import favouriteReducer from './reducers/favouriteReducer.js';
+import setReceivedGenresReducer from './reducers/genresReducer.js';
 
 export default combineReducers({
     myFilms: filmReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
     about: aboutReducer,
     sections: sectionsReducer,
     favourite: favouriteReducer,
+    genres: setReceivedGenresReducer
 });

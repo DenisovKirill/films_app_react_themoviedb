@@ -2,8 +2,8 @@ import React from "react";
 
 import './Input.css'
 
-export const Input = ({onChange}) => {
+export const Input = ({value, onChange}) => {
     return(
-        <input className='input' onChange={onChange} />
+        <input className='input' value={value}  onChange={onChange} />
     )
 }

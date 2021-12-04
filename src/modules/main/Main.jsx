@@ -9,13 +9,15 @@ import { FilmsContainer } from "../../components/filmsContainer/FilmsContainer";
 import { FavouriteContainer } from "../../components/favouriteContainer/FavouriteContainer";
 import { Header } from "../../components/header/Header";
 import { setFilms } from "../../store/actions/filmsActions";
-import { API } from '../../api/Api';
-import { KEY } from '../../api/Api';
+import { getGenres } from "../../services/getGenres";
+import { setReceivedGenres } from "../../store/actions/genresActions";
+import { API, KEY } from '../../api/Api';
 
 import qs from 'qs';
 
 export const Main = () => {
     const dispatch = useDispatch();
+
 
     const {genres, userScore, page, filmsSection, favoriteSection} = useSelector((
         {options: { genres, userScore, page }, sections: {filmsSection, favoriteSection} }
@@ -38,7 +40,14 @@ export const Main = () => {
     const optionsString = qs.stringify(options);
 
     useEffect(() => {
-        dispatch(setFilms(`${API}discover/movie?api_key=${KEY}&${optionsString}`));
+        getGenres()
+        .then((success) => {
+            dispatch(setReceivedGenres(success.genres))
+        })
+    }, [])
+
+    useEffect(() => {
+        dispatch(setFilms(`${API}discover/movie${KEY}&${optionsString}`));
     }, [genres, userScore, page]);
 
     return (

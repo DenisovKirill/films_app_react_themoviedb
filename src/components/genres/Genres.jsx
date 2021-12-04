@@ -1,49 +1,35 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { debounce } from 'throttle-debounce';
+import { getData } from "../../services/getData";
 
 import { setGenre } from "../../store/actions/optionsActions";
 
-import './Genres.css'
-
-const genresList = [
-    {"id":28,"name":"Action"},
-    {"id":12,"name":"Adventure"},{"id":16,"name":"Animation"},
-    {"id":35,"name":"Comedy"},
-    {"id":80,"name":"Crime"},
-    {"id":99,"name":"Documentary"},
-    {"id":18,"name":"Drama"},
-    {"id":10751,"name":"Family"},
-    {"id":14,"name":"Fantasy"},
-    {"id":36,"name":"History"},
-    {"id":27,"name":"Horror"},
-    {"id":10402,"name":"Music"},
-    {"id":9648,"name":"Mystery"},
-    {"id":10749,"name":"Romance"},
-    {"id":878,"name":"Science Fiction"},
-    {"id":10770,"name":"TV Movie"},
-    {"id":53,"name":"Thriller"},
-    {"id":10752,"name":"War"},
-    {"id":37,"name":"Western"}
-];
+import './Genres.css';
 
 export const Genres = () => {
+    const { genresList, genres } = useSelector(({ genres: { genresList }, options: { genres } }) => (
+       { genresList,
+        genres}
+    ))
     const dispatch = useDispatch();
 
-    const genreButtonClick = (item, { target }) => {
-        if (!target.classList.contains("genres-buttton-active")) {
-            target.classList.add('genres-buttton-active')
-        } else {
-            target.classList.remove('genres-buttton-active')
-        }
-        dispatch(setGenre(item.id));
-    };
+    const genreButtonClick = ((item, { target }) => {
+        debounce(dispatch(setGenre(item.id)));
+    });
 
     const renderGenres = () => {
         return genresList.map((item, i) => {
+            let cls = ['genres-buttton'];
+            const exist = genres.some( it => item.id === it);
+
+            if (exist) {
+                cls = [...cls, 'genres-buttton-active']
+            }
             return (
                 <React.Fragment key={i}>
                     <button
-                        className='genres-buttton'
+                        className={cls.join(' ')}
                         onClick={({ target }) => {
                             genreButtonClick(item, { target })
                         }}

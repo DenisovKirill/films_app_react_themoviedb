@@ -1,7 +1,7 @@
 export const FILMS_ACTION_TYPES = Object.freeze({
     SET_FILMS: 'SET_FILMS',
     SET_TOTAL_PAGES: 'SET_TOTAL_PAGES',
-    SET_DATA: 'SET_DATA'
+    SET_LOADING: 'SET_LOADING'
 });
 
 export const OPTIONS_ACTIONS_TYPES = Object.freeze({
@@ -23,4 +23,8 @@ export const SECTIONS_ACTIONS_TYPES = Object.freeze({
 
 export const FAVOURITE_ACTIONS_TYPES = Object.freeze({
     SET_FAVOURITE: 'SET_FAVOURITE'
+});
+
+export const GENRES_ACTIONS_TYPES = Object.freeze({
+    SET_RECEIVED_GENRES: 'SET_RECEIVED_GENRES'
 });

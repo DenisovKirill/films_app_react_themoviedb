@@ -1,18 +1,25 @@
 import { FAVOURITE_ACTIONS_TYPES } from "./types";
 import { getData } from "../../services/getData";
+import { API, KEY } from '../../api/Api';
 
 export const setFavourite = () => async (dispatch) =>  {
-    const favIds = JSON.parse(localStorage.getItem('favoriteInStorage'));
+    try {
+        const favIds = JSON.parse(localStorage.getItem('favoriteInStorage'));
 
-    const favArr = favIds.map((item) => getData(`https://api.themoviedb.org/3/movie/${item}?api_key=8e526a58ae4ed5fe38e95586eb468e63`));
+        const favArr = favIds.map((item) => getData(`${API}movie/${item}${KEY}`));
 
-    Promise.all(favArr)
-        .then(response => {
-            dispatch({type: FAVOURITE_ACTIONS_TYPES.SET_FAVOURITE, payload: [...response]});
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        Promise.all(favArr)
+            .then(response => {
+                dispatch({type: FAVOURITE_ACTIONS_TYPES.SET_FAVOURITE, payload: [...response]});
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    catch {
+        console.log('Some error');
+    }
+
 };
 
 // export const init =  () => async (dispatch) => {

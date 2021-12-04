@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilms } from "../../store/actions/filmsActions";
 
-import { API } from '../../api/Api';
-import { KEY } from '../../api/Api';
+import { API, KEY } from '../../api/Api';
 import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
 
@@ -26,7 +25,7 @@ export const Search = () => {
             //     pathname: '/',
             //     search: `?search=${searchValue}`
             // })
-            dispatch(setFilms(`${API}search/movie?api_key=${KEY}&query=${searchValue}`));
+            dispatch(setFilms(`${API}search/movie${KEY}&query=${searchValue}`));
         };
     }
 
@@ -35,6 +34,7 @@ export const Search = () => {
             <Input value={searchValue} onChange={queryFromInput} />
             <Button
                 className='search__button'
+                value={searchValue}
                 text='Search'
                 onClick={searchFilms}
             />
