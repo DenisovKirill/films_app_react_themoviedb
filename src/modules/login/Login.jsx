@@ -1,12 +1,7 @@
 import React from "react";
-// import { makeStyles } from '@material-ui/core/styles';
-import { Form } from "../../components/form/Form";
+import LoginForm from "../../components/loginForm/LoginForm";
 
-// import { loginStyle } from '../../components/form/style'
-
-// const useStyles = makeStyles({
-//     loginStyle
-// });
+import './Login.css';
 
 export const Login = (props) => {
     const goToFilms = () => {
@@ -14,6 +9,9 @@ export const Login = (props) => {
         history.push('/films')
     }
     return (
-        <Form goTo={goToFilms}/>
+        <div className= 'login'>
+            <LoginForm goTo={goToFilms}/>
+        </div>
+
     )
-}
+};

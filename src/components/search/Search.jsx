@@ -9,6 +9,7 @@ import { setSearchSection, setFilmsSection } from "../../store/actions/sectionAc
 
 import './Search.css';
 
+
 export const Search = () => {
     const dispatch = useDispatch();
 
@@ -26,7 +27,6 @@ export const Search = () => {
             dispatch(setSearchSection);
         }
     }, [history.location]);
-
 
     const queryFromInput = ({ target: { value } }) => {
         setSearchValue(value);

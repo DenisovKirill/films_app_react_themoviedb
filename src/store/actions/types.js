@@ -5,7 +5,7 @@ export const FILMS_ACTION_TYPES = Object.freeze({
 });
 
 export const OPTIONS_ACTIONS_TYPES = Object.freeze({
-    SET_QUERRY: 'SET_QUERRY',
+    SET_QUERY: 'SET_QUERY',
     SET_GENRES: 'SET_GENRES',
     SET_USER_SCORE: 'SET_USER_SCORE',
     SET_RELEASE_DATE_FROM: 'SET_RELEASE_DATE_FROM',

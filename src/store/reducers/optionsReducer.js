@@ -3,6 +3,7 @@ import { OPTIONS_ACTIONS_TYPES } from "../actions/types";
 let now = new Date().toISOString().split('T')[0]
 
 const initialState = {
+    query: '',
     genres: [],
     userScore: [0, 10],
     releaseDateFrom: null,
@@ -12,6 +13,12 @@ const initialState = {
 
 const optionsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case OPTIONS_ACTIONS_TYPES.SET_QUERY:
+            return {
+                ...state,
+                userScore: action.payload
+            };
+
         case OPTIONS_ACTIONS_TYPES.SET_GENRES:
             return {
                 ...state,

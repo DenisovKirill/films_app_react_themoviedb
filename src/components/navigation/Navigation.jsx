@@ -15,11 +15,15 @@ export const Navigation = () => {
     const showFilmsSection = () => {
         dispatch(setFilmsSection);
         history.push('/films');
-    }
+    };
 
     const showFavouriteSection = () => {
         dispatch(setFavouriteSection);
         history.push('/favourite');
+    };
+
+    const goToLogin = () => {
+        history.push('/');
     }
 
     return(
@@ -31,7 +35,7 @@ export const Navigation = () => {
                 <span onClick={showFavouriteSection} >Favourite</span>
             </Grid>
             <Grid className='navigation__item' item>
-                Logout
+                <span onClick={goToLogin} >Logout</span>
             </Grid>
         </Grid>
     )

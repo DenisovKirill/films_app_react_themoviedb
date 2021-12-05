@@ -10,22 +10,22 @@ import { FavouriteContainer } from "../../components/favouriteContainer/Favourit
 import { Header } from "../../components/header/Header";
 import { getGenres } from "../../services/getGenres";
 import { setReceivedGenres } from "../../store/actions/genresActions";
+import { setQuery } from "../../store/actions/optionsActions";
 import { useLoading } from "../../hooks/useLoading";
 
 
 export const Main = () => {
     const dispatch = useDispatch();
 
-    const { favoriteSection } = useSelector((
-        { sections: {  favoriteSection } }
-        ) => ({
+    const { favoriteSection } = useSelector(({ sections: {  favoriteSection } }) => ({
             favoriteSection
     }));
 
     useEffect(() => {
+        setQuery('')
         getGenres()
         .then((success) => {
-            dispatch(setReceivedGenres(success.genres))
+            dispatch(setReceivedGenres(success.genres));
         })
     }, [])
 

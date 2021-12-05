@@ -1,5 +1,12 @@
 import { OPTIONS_ACTIONS_TYPES } from "./types";
 
+export const setQuery = (query) => {
+    return {
+        type: OPTIONS_ACTIONS_TYPES.SET_QUERY,
+        payload: query
+    }
+};
+
 export const setGenre = (newGenre) => {
     return {
         type: OPTIONS_ACTIONS_TYPES.SET_GENRES,
