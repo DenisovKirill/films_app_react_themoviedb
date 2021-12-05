@@ -16,7 +16,7 @@ export const About = (props) => {
     console.log(props);
 
     const goBack = () => {
-        history.go(-1)
+        history.goBack();
     }
 
     useEffect(() => {

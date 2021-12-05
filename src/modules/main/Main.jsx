@@ -12,16 +12,14 @@ import { getGenres } from "../../services/getGenres";
 import { setReceivedGenres } from "../../store/actions/genresActions";
 import { useLoading } from "../../hooks/useLoading";
 
+
 export const Main = () => {
     const dispatch = useDispatch();
 
-
-    const { filmsSection, favoriteSection, searchSection } = useSelector((
-        { sections: { filmsSection, favoriteSection, searchSection } }
+    const { favoriteSection } = useSelector((
+        { sections: {  favoriteSection } }
         ) => ({
-            filmsSection,
-            favoriteSection,
-            searchSection
+            favoriteSection
     }));
 
     useEffect(() => {

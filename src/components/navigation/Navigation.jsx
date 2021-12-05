@@ -13,13 +13,13 @@ export const Navigation = () => {
     const dispatch = useDispatch();
 
     const showFilmsSection = () => {
-        dispatch(setFilmsSection)
+        dispatch(setFilmsSection);
+        history.push('/films');
     }
 
     const showFavouriteSection = () => {
         dispatch(setFavouriteSection);
-        history.location.pathname ='./favourite';
-        console.log(history);
+        history.push('/favourite');
     }
 
     return(

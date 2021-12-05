@@ -3,22 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from "react-router-dom";
 import qs from 'qs';
 
-import { setFilms } from "../../store/actions/filmsActions";
-import { API, KEY } from '../../api/Api';
 import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
 import { setSearchSection, setFilmsSection } from "../../store/actions/sectionActions";
 
 import './Search.css';
 
-
 export const Search = () => {
     const dispatch = useDispatch();
 
-    const { filmsSection, searchSection, favoriteSection } = useSelector(({ sections: { filmsSection, searchSection, favoriteSection } }) => ({
-        filmsSection,
-        searchSection,
-        favoriteSection
+    const { filmsSection } = useSelector(({ sections: { filmsSection} }) => ({
+        filmsSection
     }));
 
     const [searchValue, setSearchValue] = useState('');
@@ -43,7 +38,6 @@ export const Search = () => {
                 pathname: '/films',
                 search: `?query=${searchValue}`
             })
-            
         } else {
             history.push( '/films');
         };

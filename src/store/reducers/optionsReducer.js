@@ -5,7 +5,7 @@ let now = new Date().toISOString().split('T')[0]
 const initialState = {
     genres: [],
     userScore: [0, 10],
-    releaseDateFrom: '2001-01-01',
+    releaseDateFrom: null,
     releaseDateTo: now,
     page: 1
 };
