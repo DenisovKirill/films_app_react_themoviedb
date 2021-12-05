@@ -12,8 +12,9 @@ import './Options.css'
 export const Options = () => {
     const dispatch = useDispatch();
 
-    const { filmsSection, favoriteSection } = useSelector(({ sections: { filmsSection, favoriteSection } }) => ({
+    const { filmsSection, searchSection, favoriteSection } = useSelector(({ sections: { filmsSection, searchSection, favoriteSection } }) => ({
         filmsSection,
+        searchSection,
         favoriteSection
     }));
 
@@ -26,14 +27,17 @@ export const Options = () => {
 
     return(
         <>
-        {filmsSection &&
+        {!favoriteSection &&
             <div>
                 <Search/>
-                <Filters/>
-                <Button className='options__button' text='Clear options' onClick={clearFilters} />
+                {!searchSection && <Filters/>}
+                {!searchSection && <Button
+                    className='options__button'
+                    text='Clear options'
+                    onClick={clearFilters}
+                />}
             </div>
         }
         </>
-
     )
 }

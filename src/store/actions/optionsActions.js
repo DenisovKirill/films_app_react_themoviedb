@@ -14,10 +14,17 @@ export const setUserScore = (newScoreRange) => {
     }
 };
 
-export const setReleaseDatesRange = (newReleaseDatesRange) => {
+export const setReleaseDateFrom = (newReleaseDateFrom) => {
     return {
-        type: OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATES,
-        payload: newReleaseDatesRange
+        type: OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATE_FROM,
+        payload: newReleaseDateFrom
+    }
+};
+
+export const setReleaseDateTo = (newReleaseDateTo) => {
+    return {
+        type: OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATE_TO,
+        payload: newReleaseDateTo
     }
 };
 

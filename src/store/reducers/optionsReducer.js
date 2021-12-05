@@ -1,9 +1,12 @@
 import { OPTIONS_ACTIONS_TYPES } from "../actions/types";
 
+let now = new Date().toISOString().split('T')[0]
+
 const initialState = {
     genres: [],
     userScore: [0, 10],
-    releaseDatesRange: [],
+    releaseDateFrom: '2001-01-01',
+    releaseDateTo: now,
     page: 1
 };
 
@@ -23,20 +26,26 @@ const optionsReducer = (state = initialState, action) => {
                 userScore: action.payload
             };
 
-        case OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATES:
+        case OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATE_FROM:
             return {
                 ...state,
-                releaseDatesRange: action.payload
+                releaseDateFrom: action.payload
             }
 
-            case OPTIONS_ACTIONS_TYPES.SET_PAGE:
-                return {
-                    ...state,
-                    page: action.payload
-                };
+        case OPTIONS_ACTIONS_TYPES.SET_RELEASE_DATE_TO:
+            return {
+                ...state,
+                releaseDateTo: action.payload
+            }
 
-            case OPTIONS_ACTIONS_TYPES.CLEAR_OPTIONS:
-                return initialState;
+        case OPTIONS_ACTIONS_TYPES.SET_PAGE:
+            return {
+                ...state,
+                page: action.payload
+            };
+
+        case OPTIONS_ACTIONS_TYPES.CLEAR_OPTIONS:
+            return initialState;
 
         default:
             return state

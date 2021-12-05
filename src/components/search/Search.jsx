@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setFilms } from "../../store/actions/filmsActions";
+import { useDispatch, useSelector } from "react-redux";
+import {useHistory} from "react-router-dom";
 import qs from 'qs';
 
+import { setFilms } from "../../store/actions/filmsActions";
 import { API, KEY } from '../../api/Api';
 import { Button } from "../../components/button/Button";
 import { Input } from "../../components/input/Input";
+import { setSearchSection, setFilmsSection } from "../../store/actions/sectionActions";
 
 import './Search.css';
-import {useHistory} from "react-router-dom";
+
 
 export const Search = () => {
     const dispatch = useDispatch();
+
+    const { filmsSection, searchSection, favoriteSection } = useSelector(({ sections: { filmsSection, searchSection, favoriteSection } }) => ({
+        filmsSection,
+        searchSection,
+        favoriteSection
+    }));
+
     const [searchValue, setSearchValue] = useState('');
     const history = useHistory();
 
-    const {query} = qs.parse(history.location.search, { ignoreQueryPrefix: true });
-
     useEffect(() => {
+        const {query} = qs.parse(history.location.search, { ignoreQueryPrefix: true });
         if(query && query !== '') {
             setSearchValue(query);
+            dispatch(setSearchSection);
         }
-    }, []);
+    }, [history.location]);
+
 
     const queryFromInput = ({ target: { value } }) => {
         setSearchValue(value);
@@ -33,25 +43,34 @@ export const Search = () => {
                 pathname: '/films',
                 search: `?query=${searchValue}`
             })
-            // dispatch(setFilms(`${API}search/movie${KEY}&query=${searchValue}`));
+            
         } else {
             history.push( '/films');
         };
     };
     const goToFilms = () => {
-        history.push('/films')
+        history.push('/films');
+        dispatch(setFilmsSection);
     };
 
     return(
         <div>
-            <Input value={searchValue} onChange={queryFromInput} />
+            <Input
+                value={searchValue}
+                placeHolder='Enter some film'
+                onChange={queryFromInput}
+            />
             <Button
                 className='search__button'
                 value={searchValue}
                 text='Search'
                 onClick={searchFilms}
             />
-            <Button className='options__button' text='Back' onClick={goToFilms} />
+            {!filmsSection && <Button
+                className='options__button'
+                text='Back'
+                onClick={goToFilms}
+            />}
 
         </div>
     )

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserScore } from "../../store/actions/optionsActions";
 import { debounce } from 'throttle-debounce';
 
@@ -8,7 +8,9 @@ import Slider from '@material-ui/core/Slider';
 export const UserScore = () => {
     const dispatch = useDispatch();
 
-    const [value, setValue] = React.useState([0, 10]);
+    const { userScore } = useSelector(({ options: { userScore } }) => ({
+        userScore
+    }))
 
     const marks = [
         {
@@ -26,16 +28,14 @@ export const UserScore = () => {
     ];
 
     const userScoreChange = debounce(500, (_, newValue) => {
-        setValue(newValue);
         dispatch(setUserScore(newValue))
-        console.log(value)
     });
 
     return (
         <div>
             <span>User Score</span>
             <Slider
-                value={value}
+                value={userScore}
                 onChange={userScoreChange}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"

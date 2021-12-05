@@ -6,9 +6,11 @@ import { setPage } from "../../store/actions/optionsActions";
 
 export const FilmsPagination = () => {
     const dispatch = useDispatch();
-    const {  total_pages } = useSelector(({ filmsInfo: { total_pages } }) => ({
-        total_pages
+    const {  total_pages, page } = useSelector(({ filmsInfo: { total_pages }, options: { page } }) => ({
+        total_pages,
+        page
     }));
+
 
     const handlePage = (_, value) => {
         console.log(value);
@@ -18,6 +20,7 @@ export const FilmsPagination = () => {
     return (
         <>
         { total_pages > 0 && <Pagination
+            page={page}
             count={total_pages}
             color="primary"
             onChange={handlePage}/>}
