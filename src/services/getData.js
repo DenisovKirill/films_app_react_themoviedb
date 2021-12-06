@@ -5,7 +5,7 @@ export const getData = async (url) =>  {
         return formattedData;
     }
     catch {
-        console.log('Some error');
+        alert('Error');
         return [];
     }
 };

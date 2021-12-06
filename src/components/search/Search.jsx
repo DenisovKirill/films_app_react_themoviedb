@@ -9,7 +9,6 @@ import { setSearchSection, setFilmsSection } from "../../store/actions/sectionAc
 
 import './Search.css';
 
-
 export const Search = () => {
     const dispatch = useDispatch();
 
@@ -42,6 +41,7 @@ export const Search = () => {
             history.push( '/films');
         };
     };
+
     const goToFilms = () => {
         history.push('/films');
         dispatch(setFilmsSection);
@@ -68,4 +68,4 @@ export const Search = () => {
 
         </div>
     )
-}
+};

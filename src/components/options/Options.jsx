@@ -12,8 +12,7 @@ import './Options.css'
 export const Options = () => {
     const dispatch = useDispatch();
 
-    const { filmsSection, searchSection, favoriteSection } = useSelector(({ sections: { filmsSection, searchSection, favoriteSection } }) => ({
-        filmsSection,
+    const { searchSection, favoriteSection } = useSelector(({ sections: { searchSection, favoriteSection } }) => ({
         searchSection,
         favoriteSection
     }));
@@ -40,4 +39,4 @@ export const Options = () => {
         }
         </>
     )
-}
+};

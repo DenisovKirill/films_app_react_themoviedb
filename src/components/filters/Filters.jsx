@@ -1,14 +1,10 @@
 import React from 'react';
-// import Accordion from '@material-ui/core/Accordion';
-// import AccordionSummary from '@material-ui/core/AccordionSummary';
-// import AccordionDetails from '@material-ui/core/AccordionDetails';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Genres } from "../genres/Genres";
 import { UserScore } from '../userScore/UserScore';
 import { DatePicker } from '../datePicker/DatePicker';
 
-import './Filters.css'
+import './Filters.css';
 
 
 export const Filters  = () => {
@@ -19,8 +15,5 @@ export const Filters  = () => {
         <UserScore />
         <DatePicker />
     </div>
-  );
-}
-
-
-
+  )
+};

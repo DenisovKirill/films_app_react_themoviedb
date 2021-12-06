@@ -53,12 +53,8 @@ export const FilmInfo = (props) => {
                             />
                         </Grid>
                     </Grid>
-
-
                 </div>
               </Container>
-
-
         </div>
     )
-}
+};

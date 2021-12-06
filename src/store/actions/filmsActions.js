@@ -14,7 +14,7 @@ export const setFilms = (url) => async (dispatch) =>  {
         dispatch({type: FILMS_ACTION_TYPES.SET_LOADING , payload: false});
     }
     catch {
-        console.log('Some error');
+        alert('Error');
         dispatch({type: FILMS_ACTION_TYPES.SET_LOADING , payload: false});
     }
 };

@@ -10,7 +10,7 @@ export const UserScore = () => {
 
     const { userScore } = useSelector(({ options: { userScore } }) => ({
         userScore
-    }))
+    }));
 
     const marks = [
         {
@@ -46,4 +46,4 @@ export const UserScore = () => {
             />
         </div>
     )
-}
+};

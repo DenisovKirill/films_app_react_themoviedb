@@ -5,10 +5,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker  } from '@material-ui/pickers';
 
-// import TextField from '@material-ui/core/TextField';
-
 import { setReleaseDateFrom, setReleaseDateTo } from "../../store/actions/optionsActions";
-
 
 export const DatePicker = () => {
     const dispatch = useDispatch();
@@ -53,4 +50,4 @@ export const DatePicker = () => {
             />
         </MuiPickersUtilsProvider>
     );
-}
+};

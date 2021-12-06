@@ -25,16 +25,11 @@ const LoginForm = (props) => {
             .max(20, 'Too Long!')
     })
 
-    const onSubmit = values => {
-        console.log('Form data', values)
-    }
-
   return (
     <div>
         <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={onSubmit}
     >
         {formik => {
             return (

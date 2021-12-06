@@ -24,7 +24,7 @@ export const Navigation = () => {
 
     const goToLogin = () => {
         history.push('/');
-    }
+    };
 
     return(
         <Grid container className='navigation' justifyContent='flex-end'>

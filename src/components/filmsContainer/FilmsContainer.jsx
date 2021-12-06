@@ -17,7 +17,7 @@ export const FilmsContainer = () => {
 
     if (!loading && films.length === 0) {
         return <p>Films not found</p>;
-    }
+    };
 
     return(
         <div>

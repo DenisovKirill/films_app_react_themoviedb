@@ -26,19 +26,19 @@
     padding: 0;
     flex-grow: 1;
     padding-bottom: 15px;
-    /* flex: 1 */
 }
 
-.film-card__btn {
+.film-card__content .film-card__btn {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgb(94, 84, 204);
+    bottom: 12px;
+    right: 15px;
+    width: 25px;
+    color: #b80b0b;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .film-card__container .film-card__rating {
     position: absolute;
     bottom: 15px;
-    /* width: 50%; */
-    /* padding-bottom: 20px; */
 }

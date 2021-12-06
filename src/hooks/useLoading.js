@@ -40,9 +40,8 @@ export const useLoading = () => {
     return useEffect(() => {
         let url = `${API}discover/movie${KEY}&${optionsString}`;
         if(query && query !== '') {
-            console.log('query', query);
             url = `${API}search/movie${KEY}&query=${query}&page=${page}`;
         }
         dispatch(setFilms(url));
     }, [genres, userScore, page, releaseDateFrom, releaseDateTo, query]);
-}
+};

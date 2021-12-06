@@ -13,7 +13,6 @@ export const About = (props) => {
     }));
 
     const {history, match: {params: { id }}} = props;
-    console.log(props);
 
     const goBack = () => {
         history.goBack();
@@ -28,9 +27,8 @@ export const About = (props) => {
     }, [id]);
 
     const renderAbout = () => {
-        const background = `https://image.tmdb.org/t/p/original/${info?.backdrop_path}`
-        console.log('background: ', background);
-        const genres = info.genres.map(item => item.name).join(', ')
+        const background = `https://image.tmdb.org/t/p/original/${info?.backdrop_path}`;
+        const genres = info.genres.map(item => item.name).join(', ');
         const countries= info.production_countries.map(item => item.name).join(', ');
 
         return (
@@ -55,4 +53,4 @@ export const About = (props) => {
             {info&&renderAbout()}
         </div>
     )
-}
+};

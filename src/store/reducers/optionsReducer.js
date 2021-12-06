@@ -1,6 +1,6 @@
 import { OPTIONS_ACTIONS_TYPES } from "../actions/types";
 
-let now = new Date().toISOString().split('T')[0]
+let now = new Date().toISOString().split('T')[0];
 
 const initialState = {
     query: '',

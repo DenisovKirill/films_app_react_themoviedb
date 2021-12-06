@@ -13,7 +13,6 @@ import { setReceivedGenres } from "../../store/actions/genresActions";
 import { setQuery } from "../../store/actions/optionsActions";
 import { useLoading } from "../../hooks/useLoading";
 
-
 export const Main = () => {
     const dispatch = useDispatch();
 

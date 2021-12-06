@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { debounce } from 'throttle-debounce';
 
 import { setGenre } from "../../store/actions/optionsActions";
 import { FILMS_ACTION_TYPES } from "../../store/actions/types";
@@ -11,7 +10,7 @@ export const Genres = () => {
     const { genresList, genres } = useSelector(({ genres: { genresList }, options: { genres } }) => (
        { genresList,
         genres}
-    ))
+    ));
     const dispatch = useDispatch();
 
     const genreButtonClick = (item, { target }) => {
@@ -48,4 +47,4 @@ export const Genres = () => {
             {renderGenres()}
         </div>
     )
-}
+};

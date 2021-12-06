@@ -4,7 +4,8 @@ import logo from '../../images/screen.png';
 
 const useStyles = makeStyles({
     logo: {
-        width: '50px'
+        width: '50px',
+        cursor: 'pointer'
     }
 });
 

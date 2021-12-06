@@ -3,13 +3,25 @@ import { Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import { Rating } from "@material-ui/lab";
+import { loadCSS } from 'fg-loadcss';
+import Icon from '@material-ui/core/Icon';
 
-import { Button } from "../button/Button";
 import defaultPoster from '../../images/no-img.jpg'
 
 import './FilmCard.css';
 
+
 export const FilmCard = (props) => {
+    React.useEffect(() => {
+      const node = loadCSS(
+        'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
+        document.querySelector('#font-awesome-css'),
+      );
+
+      return () => {
+        node.parentNode.removeChild(node);
+      };
+    }, []);
 
     const src = props.src ? `https://image.tmdb.org/t/p/original/${props.src}` : defaultPoster;
 
@@ -35,11 +47,8 @@ export const FilmCard = (props) => {
                     max={10}
                     readOnly
                 />
-                <Button
-                    className='film-card__btn'
-                    text='Fav'
-                    onClick={props.favAction}
-                />
+                <Icon className='film-card__btn fa fa-heart' onClick={props.favAction}/>
+
             </div>
         </div>
     </Grid>

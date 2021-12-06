@@ -8,7 +8,7 @@ export const setAboutInfo = (id) => async (dispatch) => {
     dispatch({type: ABOUT_ACTIONS_TYPES.SET_ABOUT_INFO, payload: data});
     }
     catch {
-        console.log('Some error');
+        alert('Error');
     }
 };
 

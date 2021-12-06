@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Input.css'
+import './Input.css';
 
 export const Input = (props) => {
     return(
@@ -14,4 +14,4 @@ export const Input = (props) => {
             onBlur={props.onBlur}
         />
     )
-}
+};

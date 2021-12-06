@@ -11,9 +11,7 @@ export const FilmsPagination = () => {
         page
     }));
 
-
     const handlePage = (_, value) => {
-        console.log(value);
         dispatch(setPage(value))
     };
 
@@ -26,4 +24,4 @@ export const FilmsPagination = () => {
             onChange={handlePage}/>}
         </>
     )
-}
+};
